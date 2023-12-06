@@ -1,0 +1,8 @@
+,Mensagens
+1,"Substitua 'SEU_USUARIO_GITHUB', 'SEU_REPOSITORIO_GITHUB' e 'caminho/para/seu-arquivo.csv' pelos detalhes específicos do seu repositório e caminho do arquivo CSV."
+2,"Esse código usa o GitHub API para buscar o conteúdo do arquivo CSV no seu repositório do GitHub. Lembre-se de que, para usar a API do GitHub dessa forma, você pode estar sujeito a limites de taxa, então certifique-se de revisar a documentação da API do GitHub para mais informações."
+3,a
+4,b
+5,c
+6,d
+7,e
