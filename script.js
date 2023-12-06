@@ -1,14 +1,25 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Mensagens predefinidas
-    var messages = [
-        "Mensagem 1",
-        "Mensagem 2",
-        "Mensagem 3",
-        // Adicione mais mensagens conforme necessário
-    ];
+    // URL da sua planilha
+    var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1tOocVgAMV_M28jMX-_gQ0pWUwFOZUaV_RdhBJbjDKqk/edit?usp=sharing';
+
+    // Obtém as mensagens da planilha
+    function getMessages() {
+        return axios.get(spreadsheetUrl)
+            .then(function (response) {
+                var rows = response.data.feed.entry;
+                var messages = rows.map(function (row) {
+                    return row.gsx$mensagem.$t;
+                });
+                return messages;
+            })
+            .catch(function (error) {
+                console.error('Erro ao obter mensagens da planilha:', error);
+                return [];
+            });
+    }
 
     // Seleciona aleatoriamente uma mensagem
-    function getRandomMessage() {
+    function getRandomMessage(messages) {
         var randomIndex = Math.floor(Math.random() * messages.length);
         return messages[randomIndex];
     }
@@ -16,9 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Atualiza a mensagem na página
     function updateMessage() {
         var randomMessageElement = document.getElementById('randomMessage');
-        var randomMessage = getRandomMessage();
-        randomMessageElement.innerHTML = randomMessage || 'Nenhuma mensagem disponível.';
-        console.log('Mensagem atualizada:', randomMessage);
+        
+        // Obtém as mensagens da planilha e atualiza a página
+        getMessages().then(function (messages) {
+            var randomMessage = getRandomMessage(messages);
+            randomMessageElement.innerHTML = randomMessage || 'Nenhuma mensagem disponível.';
+            console.log('Mensagem atualizada:', randomMessage);
+        });
     }
 
     // Chama a função ao carregar a página
