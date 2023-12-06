@@ -27,7 +27,7 @@ body {
     font-family: 'cursive';
     text-align: justify;
     white-space: pre-line;
-    word-wrap: break-word; /* Quebra de palavra */
+    word-wrap: break-word;
 }
 
 .handwriting-animation {
@@ -54,12 +54,12 @@ body {
 
 .instagram-text {
     font-weight: bold;
-    color: #FFFFFF; /* Cor do texto "Gostou? Compartilhe marcando o" */
+    color: #FFFFFF;
 }
 
 .instagram-link {
     text-decoration: none;
-    color: #FFFFFF; /* Cor do @mis.pera */
+    color: #FFFFFF;
 }
 
 .instagram-link:hover {
@@ -67,8 +67,8 @@ body {
 }
 
 .instagram-logo {
-    margin-right: 3px; /* Ajuste conforme necessário */
-    color: #FFFFFF; /* Cor do ícone do Instagram */
+    margin-right: 3px;
+    color: #FFFFFF;
 }
 
 .logo-container {
@@ -77,7 +77,7 @@ body {
 
 .logo {
     margin-top: 10px;
-    width: 60px; /* Tamanho ajustado para 60px */
+    width: 60px;
     height: auto;
     z-index: 2;
     display: inline-block;
