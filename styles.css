@@ -3,10 +3,17 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #FEFEFE;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.instagram-section {
+    margin-bottom: 20px;
+    color: #01BAD2;
 }
 
 .card {
@@ -31,7 +38,7 @@ body {
 
 .instagram-link {
     text-decoration: none;
-    color: #FEFEFE;
+    color: #FFFFFF;
 }
 
 .instagram-link:hover {
