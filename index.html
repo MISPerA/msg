@@ -35,10 +35,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var audio = document.getElementById('backgroundAudio');
-                audio.play();
-            }, 2000); // 2000 milissegundos = 2 segundos
+            var audio = document.getElementById('backgroundAudio');
+            var hasUserInteracted = false;
+
+            document.addEventListener('touchstart', function () {
+                if (!hasUserInteracted) {
+                    audio.play();
+                    hasUserInteracted = true;
+                }
+            });
+
+            document.addEventListener('click', function () {
+                if (!hasUserInteracted) {
+                    audio.play();
+                    hasUserInteracted = true;
+                }
+            });
+
+            setTimeout(function () {
+                if (!hasUserInteracted) {
+                    audio.play();
+                    hasUserInteracted = true;
+                }
+            }, 5000);
         });
     </script>
 </body>
