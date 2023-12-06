@@ -47,30 +47,23 @@ document.addEventListener('DOMContentLoaded', function () {
     updateMessage();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var audio = document.getElementById('backgroundAudio');
-    var hasUserInteracted = false;
+document.addEventListener('DOMContentLoaded', function () {
 
-    document.addEventListener('touchstart', function () {
-        if (!hasUserInteracted) {
-            audio.play();
-            hasUserInteracted = true;
-        }
-    });
+    // Função para iniciar a experiência quando o usuário clicar
+    function startExperience() {
+        var overlay = document.getElementById('overlay');
+        var audio = document.getElementById('backgroundAudio');
+        
+        // Adiciona a classe fade-out para a animação de desaparecimento
+        overlay.classList.add('fade-out');
 
-    document.addEventListener('click', function () {
-        if (!hasUserInteracted) {
-            audio.play();
-            hasUserInteracted = true;
-        }
-    });
+        // Inicia a música
+        audio.play();
 
-    setTimeout(function () {
-        if (!hasUserInteracted) {
-            audio.play();
-            hasUserInteracted = true;
-        }
-    }, 1000);
+        // Adiciona a animação de abertura à carta
+        document.querySelector('.card').classList.add('open-animation');
+    }
+
 });
 
 document.addEventListener('DOMContentLoaded', function () {

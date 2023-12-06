@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="overlay" class="overlay" onclick="startExperience()">
+        <h1>Clique para ler a carta que escrevemos para você!</h1>
+    </div>
+
     <audio id="backgroundAudio" loop style="display: none;">
         <source src="Musica.mp3" type="audio/mp3">
         Seu navegador não suporta a tag de áudio.
@@ -33,5 +37,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="script.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('backgroundAudio');
+            var hasUserInteracted = false;
+
+            document.addEventListener('touchstart', function () {
+                if (!hasUserInteracted) {
+                    audio.play();
+                    hasUserInteracted = true;
+                }
+            });
+
+            document.addEventListener('click', function () {
+                if (!hasUserInteracted) {
+                    audio.play();
+                    hasUserInteracted = true;
+                }
+            });
+
+            setTimeout(function () {
+                if (!hasUserInteracted) {
+                    audio.play();
+                    hasUserInteracted = true;
+                }
+            }, 5000);
+        });
+
+        function startExperience() {
+            var overlay = document.getElementById('overlay');
+            var audio = document.getElementById('backgroundAudio');
+            
+            overlay.classList.add('fade-out');
+            audio.play();
+            document.querySelector('.card').classList.add('open-animation');
+        }
+    </script>
 </body>
 </html>
