@@ -71,7 +71,7 @@ body {
 
 .logo {
     margin-top: 10px;
-    width: 60px; /* Tamanho ajustado para 60px */
+    width: 120px; /* Tamanho ajustado para 60px */
     height: auto;
     z-index: 2;
     display: inline-block;
