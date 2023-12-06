@@ -66,12 +66,4 @@ document.addEventListener('DOMContentLoaded', function () {
             hasUserInteracted = true;
         }
     });
-
-    // Se o usuário ainda não interagiu após um tempo, tenta iniciar a reprodução
-    setTimeout(function () {
-        if (!hasUserInteracted) {
-            audio.play();
-            hasUserInteracted = true;
-        }
-    }, 5000); // Atraso de 5 segundos
 });
