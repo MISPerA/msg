@@ -120,3 +120,10 @@ body {
         opacity: 1;
     }
 }
+
+/* Adicione este estilo para centralizar e justificar o texto na sobreposição inicial */
+.overlay h1 {
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 80%;
+}
