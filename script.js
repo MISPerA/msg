@@ -46,3 +46,45 @@ document.addEventListener('DOMContentLoaded', function () {
     // Chama a função ao carregar a página
     updateMessage();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById('backgroundAudio');
+    var hasUserInteracted = false;
+
+    document.addEventListener('touchstart', function () {
+        if (!hasUserInteracted) {
+            audio.play();
+            hasUserInteracted = true;
+        }
+    });
+
+    document.addEventListener('click', function () {
+        if (!hasUserInteracted) {
+            audio.play();
+            hasUserInteracted = true;
+        }
+    });
+
+    setTimeout(function () {
+        if (!hasUserInteracted) {
+            audio.play();
+            hasUserInteracted = true;
+        }
+    }, 1000);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    var messageElement = document.getElementById('randomMessage');
+    var messageText = messageElement.innerText;
+    var index = 0;
+
+    function typeWriter() {
+        if (index < messageText.length) {
+            messageElement.innerHTML += messageText.charAt(index);
+            index++;
+            setTimeout(typeWriter, Math.floor(Math.random() * 150) + 50); // Adiciona um atraso aleatório
+        }
+    }
+
+    typeWriter();
+});
