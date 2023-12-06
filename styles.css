@@ -14,6 +14,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #FEFEFE; /* Cor de fundo da carta */
+    transform-origin: top center;
+    animation: openCardAnimation 1s ease-in-out;
 }
 
 .handwriting {
@@ -23,11 +25,19 @@ body {
     color: #000000; /* Cor do texto da carta */
 }
 
+.handwriting-animation::after {
+    content: '|';
+    display: inline-block;
+    margin-left: 3px;
+    font-size: 24px;
+    animation: handwritingAnimation 2s steps(40, end) 1s forwards;
+}
+
 .instagram-text {
     font-family: 'Arial', sans-serif; /* Substitua pela fonte desejada */
     font-size: 20px; /* Tamanho da fonte */
     font-weight: bold; /* Negrito, se desejar */
-    color: #01BAD2; /* Cor do texto */
+    color: #4CAF50; /* Cor do texto */
 }
 
 .instagram-logo {
@@ -44,4 +54,22 @@ body {
 
 .instagram-link:hover {
     text-decoration: underline;
+}
+
+@keyframes openCardAnimation {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes handwritingAnimation {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
