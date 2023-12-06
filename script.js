@@ -47,11 +47,10 @@ document.addEventListener('DOMContentLoaded', function () {
     updateMessage();
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     var audio = document.getElementById('backgroundAudio');
     var hasUserInteracted = false;
 
-    // Adiciona um ouvinte de toque para indicar interação do usuário
     document.addEventListener('touchstart', function () {
         if (!hasUserInteracted) {
             audio.play();
@@ -59,11 +58,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Adiciona um ouvinte de clique do mouse para indicar interação do usuário
     document.addEventListener('click', function () {
         if (!hasUserInteracted) {
             audio.play();
             hasUserInteracted = true;
         }
     });
+
+    setTimeout(function () {
+        if (!hasUserInteracted) {
+            audio.play();
+            hasUserInteracted = true;
+        }
+    }, 5000);
 });
