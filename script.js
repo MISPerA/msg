@@ -1,55 +1,75 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // ID da planilha do Google Sheets
-    var spreadsheetId = '1tOocVgAMV_M28jMX-_gQ0pWUwFOZUaV_RdhBJbjDKqk';
+/* styles.css */
 
-    // ID da folha da planilha
-    var sheetId = '1611553868';
+body {
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    margin: 50px;
+    background-color: #FEFEFE; /* Cor de fundo da carta */
+}
 
-    // Chave de API
-    var apiKey = 'AIzaSyAd5Ta1t2ELy0QDp4Adc7-7gB6FptqsMZ0';
+.card {
+    border: 2px solid #01BAD2; /* Cor da borda da carta */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FEFEFE; /* Cor de fundo da carta */
+    transform-origin: top center;
+    animation: openCardAnimation 1s ease-in-out;
+}
 
-    // Número da coluna que você deseja usar (1 para a primeira coluna, 2 para a segunda, e assim por diante)
-    var columnNumber = 1;
+.handwriting {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px; /* Tamanho da fonte aumentado para melhorar a legibilidade */
+    line-height: 1.6;
+    color: #000000; /* Cor do texto da carta */
+}
 
-    // Obtém todas as linhas preenchidas da coluna desejada
-    function getFilledRows() {
-        return axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetId}?majorDimension=COLUMNS&key=${apiKey}`)
-            .then(function (response) {
-                var values = response.data.values;
-                console.log('Valores obtidos:', values);
-                var column = values && values.length >= columnNumber ? values[columnNumber - 1] : [];
-                console.log('Coluna desejada:', column);
-                // Filtra as células não vazias
-                var filledRows = column.filter(function (value) {
-                    return value.trim() !== '';
-                });
-                console.log('Linhas preenchidas:', filledRows);
-                return filledRows;
-            })
-            .catch(function (error) {
-                console.error('Erro ao obter dados da planilha', error);
-                throw error;
-            });
+.handwriting-animation::after {
+    content: '|';
+    display: inline-block;
+    margin-left: 3px;
+    font-size: 24px;
+    animation: handwritingAnimation 2s steps(40, end) 1s forwards;
+}
+
+.instagram-text {
+    font-family: 'Arial', sans-serif; /* Substitua pela fonte desejada */
+    font-size: 20px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito, se desejar */
+    color: #4CAF50; /* Cor do texto */
+}
+
+.instagram-logo {
+    font-size: 24px; /* Tamanho do ícone */
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+    vertical-align: middle;
+}
+
+.instagram-link {
+    text-decoration: none;
+    color: #000000; /* Cor do texto do link */
+    transition: underline 0.3s ease; /* Adiciona transição para o sublinhado */
+}
+
+.instagram-link:hover {
+    text-decoration: underline;
+}
+
+@keyframes openCardAnimation {
+    from {
+        transform: scaleY(0);
     }
-
-    // Seleciona aleatoriamente uma linha preenchida
-    function getRandomRow(rows) {
-        var randomIndex = Math.floor(Math.random() * rows.length);
-        return rows[randomIndex];
+    to {
+        transform: scaleY(1);
     }
+}
 
-    // Atualiza a mensagem na página
-    function updateMessage() {
-        getFilledRows().then(function (filledRows) {
-            var randomMessageElement = document.getElementById('randomMessage');
-            var randomRow = getRandomRow(filledRows);
-            randomMessageElement.innerHTML = randomRow || 'Nenhuma mensagem disponível.';
-            console.log('Mensagem atualizada:', randomMessageElement.innerHTML);
-        }).catch(function (error) {
-            console.error('Erro ao atualizar a mensagem', error);
-        });
+@keyframes handwritingAnimation {
+    from {
+        width: 0;
     }
-
-    // Chama a função ao carregar a página
-    updateMessage();
-});
+    to {
+        width: 100%;
+    }
+}
