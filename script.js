@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // URL da sua planilha
-    var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1tOocVgAMV_M28jMX-_gQ0pWUwFOZUaV_RdhBJbjDKqk/edit#gid=1611553868';
+    var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1tOocVgAMV_M28jMX-_gQ0pWUwFOZUaV_RdhBJbjDKqk/edit';
 
     // Obtém as mensagens da planilha
     function getMessages() {
