@@ -27,6 +27,7 @@ body {
     font-family: 'cursive';
     text-align: justify;
     white-space: pre-line;
+    word-wrap: break-word; /* Quebra de palavra */
 }
 
 .handwriting-animation {
