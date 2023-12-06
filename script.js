@@ -6,11 +6,21 @@ document.addEventListener('DOMContentLoaded', function () {
     function getMessages() {
         return axios.get(spreadsheetUrl)
             .then(function (response) {
-                var rows = response.data.feed.entry;
-                var messages = rows.map(function (row) {
-                    return row.gsx$mensagem.$t;
-                });
-                return messages;
+                // Verifica se a resposta e a entrada estão presentes
+                if (response.data && response.data.feed && response.data.feed.entry) {
+                    var rows = response.data.feed.entry;
+                    var messages = rows.map(function (row) {
+                        return row.gsx$mensagem ? row.gsx$mensagem.$t : null;
+                    });
+                    // Filtra mensagens nulas ou vazias
+                    messages = messages.filter(function (message) {
+                        return message !== null && message !== undefined && message.trim() !== '';
+                    });
+                    return messages;
+                } else {
+                    console.error('Resposta inesperada da API:', response);
+                    return [];
+                }
             })
             .catch(function (error) {
                 console.error('Erro ao obter mensagens da planilha:', error);
@@ -27,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Atualiza a mensagem na página
     function updateMessage() {
         var randomMessageElement = document.getElementById('randomMessage');
-        
+
         // Obtém as mensagens da planilha e atualiza a página
         getMessages().then(function (messages) {
             var randomMessage = getRandomMessage(messages);
