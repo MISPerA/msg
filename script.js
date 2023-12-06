@@ -46,3 +46,32 @@ document.addEventListener('DOMContentLoaded', function () {
     // Chama a função ao carregar a página
     updateMessage();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    var audio = document.getElementById('backgroundAudio');
+    var hasUserInteracted = false;
+
+    // Adiciona um ouvinte de toque para indicar interação do usuário
+    document.addEventListener('touchstart', function () {
+        if (!hasUserInteracted) {
+            audio.play();
+            hasUserInteracted = true;
+        }
+    });
+
+    // Adiciona um ouvinte de clique do mouse para indicar interação do usuário
+    document.addEventListener('click', function () {
+        if (!hasUserInteracted) {
+            audio.play();
+            hasUserInteracted = true;
+        }
+    });
+
+    // Se o usuário ainda não interagiu após um tempo, tenta iniciar a reprodução
+    setTimeout(function () {
+        if (!hasUserInteracted) {
+            audio.play();
+            hasUserInteracted = true;
+        }
+    }, 5000); // Atraso de 5 segundos
+});
