@@ -17,7 +17,7 @@ body {
 
 .card {
     max-width: 21cm;
-    margin: 0 auto; /* Centraliza o conteúdo */
+    margin: 0 auto;
     background-color: #01BAD2;
     padding: 20px;
     border-radius: 10px;
@@ -30,24 +30,9 @@ body {
     text-align: justify;
     white-space: pre-line;
     word-wrap: break-word;
-    overflow-wrap: break-word; /* Adiciona quebra de palavras para linhas longas */
-    font-size: 16px; /* Tamanho de fonte reduzido para telas menores */
-    margin: 10px; /* Adiciona uma margem geral */
-}
-
-.handwriting-animation {
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 2s steps(40, end);
-}
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
+    overflow-wrap: break-word;
+    font-size: 16px;
+    margin: 10px;
 }
 
 .instagram-section {
