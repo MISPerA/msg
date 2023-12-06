@@ -67,7 +67,7 @@ body {
 
 .logo {
     margin-top: 10px;
-    width: 120px; /* Ajuste o tamanho da logo conforme necessário */
+    width: 300px; /* Ajuste o tamanho da logo conforme necessário */
     height: auto;
     z-index: 2;
     display: inline-block;
