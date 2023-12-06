@@ -31,7 +31,18 @@ body {
 }
 
 .handwriting-animation {
-    animation: handwriting 1s linear infinite alternate;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 1s steps(40, end);
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
 
 .instagram-section {
