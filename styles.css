@@ -31,7 +31,7 @@ body {
     white-space: pre-line;
     word-wrap: break-word;
     font-size: 16px; /* Tamanho de fonte reduzido para telas menores */
-    margin-top: 10px; /* Adiciona uma margem superior */
+    margin: 10px; /* Adiciona uma margem geral */
 }
 
 .handwriting-animation {
