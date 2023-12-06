@@ -46,29 +46,3 @@ document.addEventListener('DOMContentLoaded', function () {
     // Chama a função ao carregar a página
     updateMessage();
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    var audio = document.getElementById('backgroundAudio');
-    var hasUserInteracted = false;
-
-    document.addEventListener('touchstart', function () {
-        if (!hasUserInteracted) {
-            audio.play();
-            hasUserInteracted = true;
-        }
-    });
-
-    document.addEventListener('click', function () {
-        if (!hasUserInteracted) {
-            audio.play();
-            hasUserInteracted = true;
-        }
-    });
-
-    setTimeout(function () {
-        if (!hasUserInteracted) {
-            audio.play();
-            hasUserInteracted = true;
-        }
-    }, 5000);
-});
