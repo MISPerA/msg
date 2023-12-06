@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartas</title>
+    <title>Mensagens Aleatórias</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <audio controls autoplay loop style="position: fixed; bottom: 0; right: 0;">
-        <source src="Musica.mp3" type="audio/mp3">
+    <audio id="backgroundAudio" loop style="display: none;">
+        <source src="sua-musica.mp3" type="audio/mp3">
         Seu navegador não suporta a tag de áudio.
     </audio>
 
@@ -32,5 +32,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('backgroundAudio');
+            audio.play();
+        });
+    </script>
 </body>
 </html>
