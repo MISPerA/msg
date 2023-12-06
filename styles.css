@@ -60,14 +60,21 @@ body {
     color: #FFFFFF; /* Cor do ícone do Instagram */
 }
 
+.username {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logo-container {
+    text-align: center;
+}
+
 .logo {
     margin-top: 10px;
     width: 60px; /* Tamanho ajustado para 60px */
     height: auto;
     z-index: 2;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: inline-block;
 }
 
 @keyframes handwriting {
