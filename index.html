@@ -59,6 +59,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 5000);
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    var messageElement = document.getElementById('randomMessage');
+    var messageText = messageElement.innerText;
+    var index = 0;
+
+    function typeWriter() {
+        if (index < messageText.length) {
+            messageElement.innerHTML += messageText.charAt(index);
+            index++;
+            setTimeout(typeWriter, Math.floor(Math.random() * 150) + 50); // Adiciona um atraso aleatório
+        }
+    }
+
+    typeWriter();
+});
     </script>
 </body>
 </html>

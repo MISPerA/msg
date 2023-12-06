@@ -33,27 +33,16 @@ body {
     overflow-wrap: break-word;
     font-size: 16px;
     margin: 10px;
-    overflow: hidden; /* Adiciona um overflow para esconder o texto que ainda não foi animado */
 }
 
-@keyframes typing {
+@keyframes handwriting {
     from {
-        width: 0; /* Começa sem largura (invisível) */
+        width: 0;
     }
     to {
-        width: 100%; /* Termina com largura total (texto completamente visível) */
+        width: 100%;
     }
 }
-
-.card::after {
-    content: "";
-    display: inline-block;
-    width: 0; /* Inicia com zero largura (invisível) */
-    overflow: hidden; /* Esconde o conteúdo que ainda não foi animado */
-    vertical-align: bottom;
-    animation: typing 2s steps(40) forwards; /* Adiciona a animação de digitação */
-}
-
 
 .instagram-section {
     margin-top: 20px;
