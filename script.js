@@ -1,48 +1,45 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // URL da sua planilha
-    var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1tOocVgAMV_M28jMX-_gQ0pWUwFOZUaV_RdhBJbjDKqk/edit';
+    // URL do seu arquivo CSV no GitHub
+    var githubUser = 'MISPerA';
+    var githubRepo = 'msg';
+    var githubPath = 'Cartas Para Missionários - Cartas.csv';
+    var csvUrl = `https://raw.githubusercontent.com/${githubUser}/${githubRepo}/main/${githubPath}`;
 
-    // Obtém as mensagens da planilha
+    // Obtém as mensagens do arquivo CSV
     function getMessages() {
-        return axios.get(spreadsheetUrl)
-            .then(function (response) {
-                // Verifica se a resposta e a entrada estão presentes
-                if (response.data && response.data.feed && response.data.feed.entry) {
-                    var rows = response.data.feed.entry;
-                    var messages = rows.map(function (row) {
-                        return row.gsx$mensagem ? row.gsx$mensagem.$t : null;
-                    });
-                    // Filtra mensagens nulas ou vazias
-                    messages = messages.filter(function (message) {
-                        return message !== null && message !== undefined && message.trim() !== '';
-                    });
-                    return messages;
-                } else {
-                    console.error('Resposta inesperada da API:', response);
-                    return [];
+        return new Promise(function (resolve, reject) {
+            Papa.parse(csvUrl, {
+                download: true,
+                header: true,
+                dynamicTyping: true,
+                complete: function (result) {
+                    if (result.errors.length > 0) {
+                        reject(result.errors);
+                    } else {
+                        resolve(result.data);
+                    }
                 }
-            })
-            .catch(function (error) {
-                console.error('Erro ao obter mensagens da planilha:', error);
-                return [];
             });
+        });
     }
 
     // Seleciona aleatoriamente uma mensagem
     function getRandomMessage(messages) {
         var randomIndex = Math.floor(Math.random() * messages.length);
-        return messages[randomIndex];
+        return messages[randomIndex].mensagem;
     }
 
     // Atualiza a mensagem na página
     function updateMessage() {
         var randomMessageElement = document.getElementById('randomMessage');
 
-        // Obtém as mensagens da planilha e atualiza a página
+        // Obtém as mensagens do arquivo CSV e atualiza a página
         getMessages().then(function (messages) {
             var randomMessage = getRandomMessage(messages);
             randomMessageElement.innerHTML = randomMessage || 'Nenhuma mensagem disponível.';
             console.log('Mensagem atualizada:', randomMessage);
+        }).catch(function (error) {
+            console.error('Erro ao obter mensagens do arquivo CSV:', error);
         });
     }
 
