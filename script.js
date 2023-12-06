@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (result.errors.length > 0) {
                         reject(result.errors);
                     } else {
-                        resolve(result.data);
+                        resolve(result.data.map(row => row.Mensagens).filter(msg => msg !== undefined));
                     }
                 }
             });
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Seleciona aleatoriamente uma mensagem
     function getRandomMessage(messages) {
         var randomIndex = Math.floor(Math.random() * messages.length);
-        return messages[randomIndex].mensagem;
+        return messages[randomIndex];
     }
 
     // Atualiza a mensagem na página
